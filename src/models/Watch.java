@@ -14,6 +14,7 @@ abstract public class Watch implements Serviceable {
     private LocalDate lastService;
     private final String serialNumber;
 
+    //constructor-getters-setters
     public Watch(String manufacturer, String model, String serialNumber, int yearOfProduction, String caliber, double marketprice, LocalDate lastService){
         this.model = model;
         this.manufacturer = manufacturer;
@@ -23,7 +24,7 @@ abstract public class Watch implements Serviceable {
         this.lastService = lastService;
         this.serialNumber = serialNumber;
     }
-    //----GETTERY
+
     public String getManufacturer() {
         return manufacturer;
     }
@@ -51,7 +52,8 @@ abstract public class Watch implements Serviceable {
     public String getSerialNumber() {
         return serialNumber;
     }
-    //----SETTER
+
+
     public void setMarketprice(double marketprice) {
         this.marketprice = marketprice;
     }
@@ -60,6 +62,7 @@ abstract public class Watch implements Serviceable {
         this.lastService = lastService;
     }
 
+    //service checking method
     public abstract int getServiceInterval();
 
     @Override
@@ -67,6 +70,7 @@ abstract public class Watch implements Serviceable {
         return getLastService().plusMonths(getServiceInterval()).isBefore(LocalDate.now());
     };
 
+    //print all watches and their service status
     @Override
     public String toString() {
         return "\nWatch informations: \nManufacturer - " + manufacturer + ",\n" +

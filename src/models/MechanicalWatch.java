@@ -12,7 +12,7 @@ public class MechanicalWatch extends Watch {
     private WindingType windingType;
     private final int serviceInterval = 72;
 
-
+    //constructor-getters-setters
     public MechanicalWatch(String manufacturer, String model, String serialNumber, int yearOfProduction, String caliber, String powerReserve, int jewels, WindingType windingType, double marketprice, LocalDate lastService) {
         super(manufacturer, model, serialNumber, yearOfProduction, caliber, marketprice, lastService);
         this.powerReserve = powerReserve;
@@ -44,6 +44,7 @@ public class MechanicalWatch extends Watch {
         this.jewels = jewels;
     }
 
+    //service checking method
     @Override
     public void service() {
         System.out.println("Watch " + getManufacturer() + " has been oiled and mainspring was changed\n");
@@ -55,6 +56,7 @@ public class MechanicalWatch extends Watch {
         return serviceInterval;
     };
 
+    //check watch winding
     private String manualOrAutomatic(){
         switch (windingType){
             case WindingType.MANUAL:
@@ -66,6 +68,7 @@ public class MechanicalWatch extends Watch {
         }
     }
 
+    //print all watches and their service status
     @Override
     public String toString() {
         return super.toString() +

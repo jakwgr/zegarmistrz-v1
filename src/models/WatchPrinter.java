@@ -1,5 +1,6 @@
 package models;
 
+//check status of watch service
 public class WatchPrinter {
     public void printStatus(Watch watch){
         if(watch.needsService()){

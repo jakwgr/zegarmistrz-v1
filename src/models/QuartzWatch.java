@@ -7,6 +7,7 @@ public class QuartzWatch extends Watch{
     private String battery;
     private final int serviceInterval = 24;
 
+    //constructor-getters-setters
     public QuartzWatch(String manufacturer, String model, String serialNumber, int yearOfProduction, String caliber, String battery, double marketprice, LocalDate lastService) {
         super(manufacturer, model, serialNumber, yearOfProduction, caliber, marketprice, lastService);
         this.battery = battery;
@@ -20,6 +21,7 @@ public class QuartzWatch extends Watch{
         this.battery = battery;
     }
 
+    //service checking method
     @Override
     public int getServiceInterval(){
         return serviceInterval;
@@ -31,6 +33,7 @@ public class QuartzWatch extends Watch{
         setLastService(LocalDate.now());
     }
 
+    //print all watches and their service status
     @Override
     public String toString() {
         return super.toString() +
