@@ -21,7 +21,13 @@ public class QuartzWatch extends Watch{
 
     @Override
     public void service() {
-        System.out.println("Wymioniono baterie w zegarku " + getManufacturer());
+        System.out.println("\nBattery has been changed in " + getManufacturer() + " watch");
         setLastService(LocalDate.now());
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "Battery - " + battery + "\n";
     }
 }

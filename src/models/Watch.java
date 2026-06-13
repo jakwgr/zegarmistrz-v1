@@ -6,13 +6,13 @@ import java.time.LocalDate;
 
 
 abstract public class Watch implements Serviceable {
-    private String manufacturer;
-    private String model;
-    private int yearOfProduction;
-    private String caliber;
+    private final String manufacturer;
+    private final String model;
+    private final int yearOfProduction;
+    private final String caliber;
     private double marketprice;
     private LocalDate lastService;
-    private String serialNumber;
+    private final String serialNumber;
 
     public Watch(String manufacturer, String model, String serialNumber, int yearOfProduction, String caliber, double marketprice, LocalDate lastService){
         this.model = model;
@@ -52,23 +52,6 @@ abstract public class Watch implements Serviceable {
         return serialNumber;
     }
     //----SETTER
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public void setYearOfProduction(int yearOfProduction) {
-        this.yearOfProduction = yearOfProduction;
-    }
-
-    public void setCaliber(String caliber) {
-        this.caliber = caliber;
-    }
-
     public void setMarketprice(double marketprice) {
         this.marketprice = marketprice;
     }
@@ -77,15 +60,23 @@ abstract public class Watch implements Serviceable {
         this.lastService = lastService;
     }
 
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
     @Override
     public void service(){};
 
     @Override
     public boolean needsService(int months) {
+        System.out.println("\nDoes watch need service? ");
         return getLastService().plusMonths(months).isBefore(LocalDate.now());
     };
+
+    @Override
+    public String toString() {
+        return "Watch informations: \nManufacturer - " + manufacturer + ",\n" +
+                "Model - " + model + ",\n" +
+                "Year Of Production - " + yearOfProduction + ",\n" +
+                "Caliber - " + caliber + ",\n" +
+                "Marketprice - " + marketprice + ",\n" +
+                "Last Service - " + lastService + ",\n" +
+                "Serial Number - " + serialNumber + ",\n";
+    }
 }
