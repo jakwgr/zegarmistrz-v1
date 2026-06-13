@@ -60,18 +60,16 @@ abstract public class Watch implements Serviceable {
         this.lastService = lastService;
     }
 
-    @Override
-    public void service(){};
+    public abstract int getServiceInterval();
 
     @Override
-    public boolean needsService(int months) {
-        System.out.println("\nDoes watch need service? ");
-        return getLastService().plusMonths(months).isBefore(LocalDate.now());
+    public boolean needsService() {
+        return getLastService().plusMonths(getServiceInterval()).isBefore(LocalDate.now());
     };
 
     @Override
     public String toString() {
-        return "Watch informations: \nManufacturer - " + manufacturer + ",\n" +
+        return "\nWatch informations: \nManufacturer - " + manufacturer + ",\n" +
                 "Model - " + model + ",\n" +
                 "Year Of Production - " + yearOfProduction + ",\n" +
                 "Caliber - " + caliber + ",\n" +

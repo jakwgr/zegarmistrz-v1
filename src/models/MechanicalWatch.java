@@ -7,9 +7,10 @@ import java.util.Date;
 
 public class MechanicalWatch extends Watch {
 
-    String powerReserve;
-    int jewels;
-    WindingType windingType;
+    private String powerReserve;
+    private int jewels;
+    private WindingType windingType;
+    private final int serviceInterval = 72;
 
 
     public MechanicalWatch(String manufacturer, String model, String serialNumber, int yearOfProduction, String caliber, String powerReserve, int jewels, WindingType windingType, double marketprice, LocalDate lastService) {
@@ -45,8 +46,24 @@ public class MechanicalWatch extends Watch {
 
     @Override
     public void service() {
-        System.out.println("\nWatch " + getManufacturer() + " has been oiled and mainspring was changed");
+        System.out.println("Watch " + getManufacturer() + " has been oiled and mainspring was changed\n");
         setLastService(LocalDate.now());
+    }
+
+    @Override
+    public int getServiceInterval(){
+        return serviceInterval;
+    };
+
+    private String manualOrAutomatic(){
+        switch (windingType){
+            case WindingType.MANUAL:
+                return "Manual Winding";
+            case WindingType.AUTOMATIC:
+                return "Automatic Winding";
+            default:
+                return "";
+        }
     }
 
     @Override
@@ -54,6 +71,6 @@ public class MechanicalWatch extends Watch {
         return super.toString() +
                 "Power Reserve - " + powerReserve + ",\n" +
                 "Jewels - " + jewels + ",\n" +
-                "WindingType - " + windingType + "\n";
+                "WindingType - " + manualOrAutomatic() + "\n";
     }
 }

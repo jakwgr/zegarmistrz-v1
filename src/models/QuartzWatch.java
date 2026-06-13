@@ -4,7 +4,8 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class QuartzWatch extends Watch{
-    String battery;
+    private String battery;
+    private final int serviceInterval = 24;
 
     public QuartzWatch(String manufacturer, String model, String serialNumber, int yearOfProduction, String caliber, String battery, double marketprice, LocalDate lastService) {
         super(manufacturer, model, serialNumber, yearOfProduction, caliber, marketprice, lastService);
@@ -20,8 +21,13 @@ public class QuartzWatch extends Watch{
     }
 
     @Override
+    public int getServiceInterval(){
+        return serviceInterval;
+    };
+
+    @Override
     public void service() {
-        System.out.println("\nBattery has been changed in " + getManufacturer() + " watch");
+        System.out.println("Battery has been changed in " + getManufacturer() + " watch\n");
         setLastService(LocalDate.now());
     }
 
